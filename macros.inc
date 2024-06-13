@@ -50,12 +50,12 @@ endm
 
 macro defcode ; \1 = name, \2 = flags, \3 = label
     SECTION FRAGMENT "Code", ROM0
-    name_\3::
+    name_\3:
         dw link
         db STRLEN(\1) + \2
-    \3::
+    \3:
         dw code_\3
-    code_\3::
+    code_\3:
     def link = name_\3
 endm
 
