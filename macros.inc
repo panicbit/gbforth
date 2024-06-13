@@ -1,12 +1,23 @@
 ; esi -> de (next subroutine address)
-; ebp -> bc (return stack)
 
 macro NEXT
-    ; de += 2
+    ; hl = de
     ld hl, 0
     add hl, de
-    inc de
-    inc de
+
+    ; bc = [de], hl = de + 2
+    ld a, [hli]
+    ld c, a
+    ld a, [hli]
+    ld b, a
+
+    ; de = hl
+    ld d, h
+    ld e, l
+
+    ; hl = bc
+    ld h, b
+    ld l, c
 
     jp hl
 endm
