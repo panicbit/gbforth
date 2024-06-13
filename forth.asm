@@ -94,8 +94,40 @@ START:
     NEXT
 
 cold_start:
+    dw VERSION
+    dw DUP
     dw QUIT
 
+next:
+    ; hl = de
+    ld hl, 0
+    add hl, de
+
+    ; bc = [de], hl = de + 2
+    ld a, [hli]
+    ld c, a
+    ld a, [hli]
+    ld b, a
+
+    ; de = hl
+    ld d, h
+    ld e, l
+
+    ; hl = bc
+    ld h, b
+    ld l, c
+
+    ; bc = [hl]
+    ld a, [hli]
+    ld c, a
+    ld a, [hli]
+    ld b, a
+
+    ; hl = bc
+    ld h, b
+    ld l, c
+
+    jp hl
 
 INCLUDE "primitives.inc"
 INCLUDE "variables.inc"
