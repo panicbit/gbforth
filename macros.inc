@@ -19,6 +19,16 @@ macro NEXT
     ld h, b
     ld l, c
 
+    ; bc = [hl]
+    ld a, [hli]
+    ld c, a
+    ld a, [hli]
+    ld b, a
+
+    ; hl = bc
+    ld h, b
+    ld l, c
+
     jp hl
 endm
 
@@ -137,14 +147,16 @@ endm
 
 macro defconst ; \1 = name, \2 = label, \3 = value
     defcode \1, 0, \2
-    dec sp
     ld hl, sp + 0
     ld a, \3
     ld [hl], a
+    dec sp
+    NEXT
 endm
 
 macro defconst16 ; \1 = name, \2 = label, \3 = value
     defcode \1, 0, \2
     ld hl, \3
     push hl
+    NEXT
 endm

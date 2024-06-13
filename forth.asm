@@ -62,11 +62,15 @@ Done:
     jp Done
 
     DOCOL:
+
+    ld b, h
+    ld c, l
+    
     PUSHRSP de
-    inc hl
-    inc hl
-    ld d, h
-    ld e, l
+
+    ld d, b
+    ld e, c
+
     NEXT
 
 ; --- forth start ---
