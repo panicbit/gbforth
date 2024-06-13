@@ -90,8 +90,7 @@ START:
     NEXT
 
 cold_start:
-    halt
-    ; db QUIT
+    dw QUIT
 
 
 INCLUDE "primitives.inc"
