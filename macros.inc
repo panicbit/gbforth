@@ -4,18 +4,6 @@ macro NEXT
     jp next
 endm
 
-; macro PUSHRSP
-;     push hl
-;     ld hl, 0
-;     add hl, bc
-
-;     dec hl
-;     ld [hl], HIGH(\1)
-;     dec hl
-;     ld [hl], LOW(\1)
-;     pop hl
-; endm
-
 macro PUSHRSP ; \1 = bc/de, clobbers a, hl
     ld hl, return_stack_pointer
 
