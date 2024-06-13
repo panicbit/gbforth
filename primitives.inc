@@ -11,9 +11,9 @@
 		NEXT
 
 	defcode "DUP", 0, DUP
-		ld hl, sp + 0
+		ld hl, sp + 1
 		ld a, [hld]
-		ld [hl], a
+		ld [hld], a
 		ld sp, hl
 		NEXT
 	
